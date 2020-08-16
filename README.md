@@ -23,5 +23,5 @@
 ## 구글클라우드 사용 관련 명령어
 >* 디렉토리 확인 : ls   
 >* 현재 열려있는 screen 확인 : screen -ls   
->* 용아맥 스크린 접속 : screen -r yongsanimax   
+>* 용아맥 스크린 접속 : screen -r imaxyongsan   
 >* 스크린 나오기  : Ctrl + a,d   
