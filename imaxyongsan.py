@@ -20,6 +20,7 @@ while True:
 	elif str(date) in html:
 		bot.sendMessage(chat_id = -1001299873599, text = "%d 예매오픈!" % date) 
 		confirm_date = date
+		date = date + 1
 	else:
 		if(now.hour == 11 and now.minute == 59):
 			bot.sendMessage(chat_id = -1001299873599, text = "%d:%d 용아맥알리미 정상작동중!" % (now.hour, now.minute))
