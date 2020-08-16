@@ -25,3 +25,5 @@
 >* 현재 열려있는 screen 확인 : screen -ls   
 >* 용아맥 스크린 접속 : screen -r imaxyongsan   
 >* 스크린 나오기  : Ctrl + a,d   
+>* git 코드 가져오기 : git pull
+>* 코드 디렉토리 : ~/code/IMAX_Yongsan/
