@@ -5,27 +5,11 @@ import calendar
 
 from bs4 import BeautifulSoup
 from datetime import datetime
+from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters)
 
 
 my_token = '1136456443:AAHnhXqpT-NqUZiK909_5017pah7wJ6LQ04'
 bot = telegram.Bot(token = my_token)
-
-
-# Telegram test reply function
-def test_command(bot, update) :
-    update.message.reply_text("용아맥알리미 정상작동중")
-
-updater = Updater(my_token)
-
-message_handler = MessageHandler(Filters.text, get_message)
-updater.dispatcher.add_handler(message_handler)
-
-help_handler = CommandHandler('test', test_command)
-updater.dispatcher.add_handler(test_handler)
-
-updater.start_polling(timeout=3, clean=True)
-updater.idle()
-
 
 
 date = 20200830
