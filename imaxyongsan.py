@@ -12,8 +12,8 @@ my_token = '1136456443:AAHnhXqpT-NqUZiK909_5017pah7wJ6LQ04'
 bot = telegram.Bot(token = my_token)
 
 
-date = 20200819
-confirm_date = 20200818
+date = 20200829
+confirm_date = 20200828
 
 
 while True:
