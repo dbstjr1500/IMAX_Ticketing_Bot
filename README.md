@@ -27,3 +27,4 @@
 >* 스크린 나오기  : Ctrl + a,d   
 >* git 코드 가져오기 : sudo git pull
 >* 코드 디렉토리 : ~/code/IMAX_Yongsan/imaxyongsan.py
+>* 스크린 만들기 : screen -S {여기에 이름 입력}
