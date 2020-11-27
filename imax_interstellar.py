@@ -53,7 +53,7 @@ while True:
 	# 매일 1회 정상작동 메세지 출력, 이후 1분간 휴식
 	else:
 		if(now.hour == 12 and now.minute == 40):
-			bot.sendMessage(chat_id = -1001299873599, text = "%d:%d 용아맥알리미 정상작동중!" % (now.hour, now.minute))
+			bot.sendMessage(chat_id = -1001299873599, text = "%d:%d 용아맥알리미 인터스텔라 정상작동중!" % (now.hour, now.minute))
 			time.sleep(60)
 		print(now)
 		print('date =', date)
