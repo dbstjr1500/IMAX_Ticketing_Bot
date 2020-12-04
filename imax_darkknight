@@ -36,7 +36,7 @@ while True:
 		print('다음달로넘어감')
 	
 	# 스캔을 끝낼 날짜 지정, 이후 5초간 대기
-	elif date == 20201231:
+	elif date == (confirm_date + 7):
 		date = confirm_date + 1
 		time.sleep(5)
 	
