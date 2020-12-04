@@ -12,8 +12,8 @@ my_token = '1136456443:AAHnhXqpT-NqUZiK909_5017pah7wJ6LQ04'
 bot = telegram.Bot(token = my_token)
 
 #시작날짜 및 마지막으로 메세지가 발송된 날짜
-date = 20201206
-confirm_date = 20201205
+date = 20201211
+confirm_date = 20201210
 
 
 
@@ -36,7 +36,7 @@ while True:
 		print('다음달로넘어감')
 	
 	# 스캔을 끝낼 날짜 지정, 이후 5초간 대기
-	elif date == 20201211:
+	elif date == 20201231:
 		date = confirm_date + 1
 		time.sleep(5)
 	
