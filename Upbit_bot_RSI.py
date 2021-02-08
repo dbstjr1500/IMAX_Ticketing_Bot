@@ -52,7 +52,7 @@ def order_info(uuid):
 	    'query_hash_alg': 'SHA512',
 	}
 
-	jwt_token = jwt.encode(payload, secret_key) #.decode('utf-8')
+	jwt_token = jwt.encode(payload, secret_key).decode('utf-8')
 	authorize_token = 'Bearer {}'.format(jwt_token)
 	headers = {"Authorization": authorize_token}
 
@@ -87,7 +87,7 @@ def buy_price(market, price) :
 	    'query_hash_alg': 'SHA512',
 	}
 
-	jwt_token = jwt.encode(payload, secret_key) #.decode('utf-8')
+	jwt_token = jwt.encode(payload, secret_key).decode('utf-8')
 	authorize_token = 'Bearer {}'.format(jwt_token)
 	headers = {"Authorization": authorize_token}
 
@@ -127,7 +127,7 @@ def sell_market(market, volume):
 	    'query_hash_alg': 'SHA512',
 	}
 
-	jwt_token = jwt.encode(payload, secret_key) #.decode('utf-8')
+	jwt_token = jwt.encode(payload, secret_key).decode('utf-8')
 	authorize_token = 'Bearer {}'.format(jwt_token)
 	headers = {"Authorization": authorize_token}
 
@@ -147,7 +147,7 @@ def account_info():
 	    'nonce': str(uuid.uuid4()),
 	}
 
-	jwt_token = jwt.encode(payload, secret_key) #.decode('utf-8')
+	jwt_token = jwt.encode(payload, secret_key).decode('utf-8')
 	authorize_token = 'Bearer {}'.format(jwt_token)
 	headers = {"Authorization": authorize_token}
 
@@ -159,15 +159,15 @@ def account_info():
 def get_BTC_balance():
 	temp = account_info()
 	for i in temp:
-		if i[0]['currency'] == 'BTC':
-			return i[0]['balance']
+		if i['currency'] == 'BTC':
+			return i['balance']
 
 
 def get_KRW_balance():
 	temp = account_info()
 	for i in temp:
-		if i[0]['currency'] == 'KRW':
-			return i[0]['balance']
+		if i['currency'] == 'KRW':
+			return i['balance']
 
 
 def rsi(ohlc: pd.DataFrame, period: int = 14) -> pd.Series:
