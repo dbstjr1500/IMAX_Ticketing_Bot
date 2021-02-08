@@ -1,4 +1,3 @@
-import os
 import jwt
 import uuid
 import hashlib
@@ -232,8 +231,6 @@ rsi 30이하일시 매수 rsi 70 이상일시 매도
 
 
 buy_status = False
-balance_BTC = 0
-balance_KRW = 0
 balance_BTC = get_BTC_balance()
 balance_KRW = get_KRW_balance()
 if balance_BTC != None:
