@@ -152,7 +152,7 @@ def account_info():
 	headers = {"Authorization": authorize_token}
 
 	res = requests.get(server_url + "/v1/accounts", headers=headers)
-
+	print(res.json())
 	return res.json()
 
 
