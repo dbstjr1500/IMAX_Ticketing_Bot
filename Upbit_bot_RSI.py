@@ -159,15 +159,15 @@ def account_info():
 def get_BTC_balance():
 	temp = account_info()
 	for i in temp:
-		if i['currency'] == 'BTC':
-			return i['balance']
+		if i[0]['currency'] == 'BTC':
+			return i[0]['balance']
 
 
 def get_KRW_balance():
 	temp = account_info()
 	for i in temp:
-		if i['currency'] == 'KRW':
-			return i['balance']
+		if i[0]['currency'] == 'KRW':
+			return i[0]['balance']
 
 
 def rsi(ohlc: pd.DataFrame, period: int = 14) -> pd.Series:
