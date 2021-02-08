@@ -8,6 +8,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters)
 import telegram
+import json
 
 #########################################################
 # 텔레그램 봇 토큰 
