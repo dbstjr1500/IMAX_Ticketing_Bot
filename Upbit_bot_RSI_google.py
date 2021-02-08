@@ -32,7 +32,7 @@ def getTradePrice(market):
     querystring = {"market": market, "count": "1"}
 
     response = requests.request("GET", url, params=querystring)
-    return json.loads(response)[0]['trade_price']
+    return json.loads(response.text)[0]['trade_price']
 
 
 def order_info(uuid):
@@ -58,7 +58,7 @@ def order_info(uuid):
 
 	res = requests.get(server_url + "/v1/order", params=query, headers=headers)
 
-	return json.loads(res)['trades'][0]['volume'], json.loads(res)['price'], json.loads(res)['trades'][0]['funds']
+	return json.loads(res.text)['trades'][0]['volume'], json.loads(res.text)['price'], json.loads(res.text)['trades'][0]['funds']
 
 
 def buy_price(market, price) :
@@ -92,13 +92,13 @@ def buy_price(market, price) :
 	headers = {"Authorization": authorize_token}
 
 	res = requests.post(server_url + "/v1/orders", params=query, headers=headers)
-	print(json.loads(res)['uuid'])
+	print(json.loads(res.text)['uuid'])
 
 	print('Checking order info......')
 	time.sleep(0.5)
-	volume, trade_price, trash = order_info(json.loads(res)['uuid'])
+	volume, trade_price, trash = order_info(json.loads(res.text)['uuid'])
 
-	return json.loads(res)['uuid'], volume, trade_price
+	return json.loads(res.text)['uuid'], volume, trade_price
 
 
 def sell_market(market, volume):
@@ -132,13 +132,13 @@ def sell_market(market, volume):
 	headers = {"Authorization": authorize_token}
 
 	res = requests.post(server_url + "/v1/orders", params=query, headers=headers)
-	print(json.loads(res)['uuid'])
+	print(json.loads(res.text)['uuid'])
 
 	print('Checking order info......')
 	time.sleep(0.5)
-	volume, trash, trade_price = order_info(json.loads(res)['uuid'])
+	volume, trash, trade_price = order_info(json.loads(res.text)['uuid'])
 
-	return json.loads(res)['uuid'], volume, trade_price
+	return json.loads(res.text)['uuid'], volume, trade_price
 
 
 def account_info():
@@ -153,7 +153,7 @@ def account_info():
 
 	res = requests.get(server_url + "/v1/accounts", headers=headers)
 
-	return json.loads(res)
+	return json.loads(res.text)
 
 
 def get_BTC_balance():
@@ -195,7 +195,7 @@ def get_Rsi(market):
 	url = server_url + '/v1/candles/minutes/1'
 	querystring = {"market":market,"count":"200"}
 	req = requests.request("GET", url, params=querystring)
-	data   = json.loads(req)
+	data   = json.loads(req.text)
 	result = []
 
 	for i, candle in enumerate(data):
