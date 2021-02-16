@@ -58,7 +58,7 @@ def order_info(uuid):
 
 	res = requests.get(server_url + "/v1/order", params=query, headers=headers)
 
-	return res.json()['trades'][0]['volume'], res.json()['price'], res.json()['trades'][0]['funds']
+	return res.json()['trades'][0]['volume'], res.json()['price'], res.json()['trades'][0]['funds'], res.json()['trades'][0]['price']
 
 
 def buy_price(market, price) :
@@ -95,10 +95,10 @@ def buy_price(market, price) :
 	print(res.json()['uuid'])
 
 	print('Checking order info......')
-	time.sleep(0.5)
-	volume, trade_price, trash = order_info(res.json()['uuid'])
+	volume, trade_price, trash, coin_price = order_info(res.json()['uuid'])
+	time.sleep(1)
 
-	return res.json()['uuid'], volume, trade_price
+	return res.json()['uuid'], volume, trade_price, coin_price
 
 
 def sell_market(market, volume):
@@ -135,10 +135,10 @@ def sell_market(market, volume):
 	print(res.json()['uuid'])
 
 	print('Checking order info......')
-	time.sleep(0.5)
-	volume, trash, trade_price = order_info(res.json()['uuid'])
+	volume, trash, trade_price, coin_price = order_info(res.json()['uuid'])
+	time.sleep(1)
 
-	return res.json()['uuid'], volume, trade_price
+	return res.json()['uuid'], volume, trade_price, coin_price
 
 
 def account_info():
@@ -247,12 +247,12 @@ try:
 		current_RSI = get_Rsi('KRW-BTC')
 		print(current_RSI)
 		if current_RSI<30 and buy_status == False:
-			uuid_order, executed_volume, avg_price = buy_price('KRW-BTC', 10000)
+			uuid_order, executed_volume, avg_price, coin_price = buy_price('KRW-BTC', 10000)
 			buy_status = True 
 			balance_BTC = get_BTC_balance()
 			balance_KRW = get_KRW_balance()
-			print("BTC %s개 매수! (평균가: %s, UUID: %s)" % (executed_volume, avg_price, uuid_order))
-			bot.sendMessage(chat_id = -1001320421761, text = "BTC %s개 매수! (평균가: %s, UUID: %s)" % (executed_volume, avg_price, uuid_order))
+			print("BTC %s개 매수! (매수가: %s, 시세: %s, UUID: %s)" % (executed_volume, avg_price, coin_price, uuid_order))
+			bot.sendMessage(chat_id = -1001320421761, text = "BTC %s개 매수! (매수가: %s, 시세: %s, UUID: %s)" % (executed_volume, avg_price, coin_price, uuid_order))
 
 			'''
 			uuid, avg_price, executed_volume = buy_price('KRW-BTC', 10000)
@@ -265,12 +265,13 @@ try:
 			'''
 
 		elif current_RSI>70 and buy_status == True:
-			uuid_order, executed_volume, avg_price = sell_market('KRW-BTC', balance_BTC)
+			uuid_order, executed_volume, avg_price, coin_price = sell_market('KRW-BTC', balance_BTC)
 			buy_status = False 
 			balance_BTC = get_BTC_balance()
 			balance_KRW = get_KRW_balance()
-			print("BTC %s개 매도! (평균가: %s, UUID: %s)" % (executed_volume, avg_price, uuid_order))
-			bot.sendMessage(chat_id = -1001320421761, text = "BTC %s개 매도! (평균가: %s, UUID: %s)" % (executed_volume, avg_price, uuid_order))
+			print(balance_BTC, balance_KRW)
+			print("BTC %s개 매도! (매도가: %s, 시세: %s, UUID: %s)" % (executed_volume, avg_price, coin_price, uuid_order))
+			bot.sendMessage(chat_id = -1001320421761, text = "BTC %s개 매도! (매도가: %s, 시세: %s, UUID: %s)" % (executed_volume, avg_price, coin_price, uuid_order))
 
 			'''
 			uuid, avg_price, executed_volume = sell_market('KRW-BTC', balance_BTC)
