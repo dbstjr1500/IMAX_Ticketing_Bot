@@ -29,4 +29,3 @@
 >* 코드 디렉토리 : ~/code/IMAX_Yongsan/imaxyongsan.py
 >* 스크린 만들기 : screen -S {여기에 이름 입력}
 >* 파이썬 실행 : python3 filename.py
->* git token : bd0f33466469c2b68af24cd17a5e61a8f32117b6
